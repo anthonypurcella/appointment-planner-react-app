@@ -1,9 +1,13 @@
 import React from 'react';
 
-export const Tile = () => {
+export const Tile = (name, description) => {
+
+    
+
     return (
         <>
-            <p>Tile</p>
+            <p className='title-title'>NAME</p>
+            <p className='tile'>MAPPED DESCRIPTION</p>
         </>
     );
 }
