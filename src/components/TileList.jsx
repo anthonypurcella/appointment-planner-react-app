@@ -1,18 +1,23 @@
 import React from 'react';
 import { Tile } from './tile';
 
-export const TileList = ({currentContacts}) => {
+export const TileList = ({currentArrs}) => {
 
 
     return (
-        <>
+      <>
         <ul>
-            {currentContacts.map((contact, index) => (
-                <li key={index}>
-                    <Tile name={contact.name} description={[contact.phone, contact.email]} />
-                </li>
-            ))}
+          {currentArrs.map((contact, index) => {
+            const entries = Object.entries(contact);
+            const [[, name], ...rest] = entries;
+            const description = rest.map(([, value]) => value);
+            return (
+              <li key={index}>
+                <Tile name={name} description={description} />
+              </li>
+            );
+          })}
         </ul>
-        </>
+      </>
     );
 }

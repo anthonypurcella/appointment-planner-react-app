@@ -14,7 +14,7 @@ import "./App.css";
 function App() {
   //Contact and Appointment Arrays
   const [contactsArr, setContactsArr] = useState([]);
-  const appointmentsArr = [];
+  const [appointmentsArr, setAppointmentsArr] = useState([]);
 
   //Contact callback function - adds new contact object with name, phone number, and email to the contactsArr
   function addContact(e, name, phone, email) {
@@ -25,7 +25,7 @@ function App() {
       phone,
       email,
     };
-    
+
     if (name === "") {
       alert("Please enter a name.");
       return;
@@ -42,15 +42,23 @@ function App() {
   }
 
   //Reset Form after submit
-  function resetForm() {
-    
-  }
+  function resetForm() {}
 
   //Appointment callback function - adds new appointment object with name, contact, date, and time to the the appointmentsArr
+  function addAppointment(e, name, contact, date, time) {
+    e.preventDefault();
 
-  //Pass contactsArr and contact callback function to ContactsPage
+    const newAppointment = {
+      name,
+      contact,
+      date,
+      time,
+    };
 
-  //Pass appointmentsArr and appointment callback function to AppointmentsPage
+    setAppointmentsArr([...appointmentsArr, newAppointment]);
+
+    console.log(appointmentsArr);
+  }
 
   //Router Setup
   const router = createBrowserRouter(
@@ -66,7 +74,10 @@ function App() {
             />
           }
         />
-        <Route path="/appointments" element={<AppointmentsPage />} />
+        <Route
+          path="/appointments"
+          element={<AppointmentsPage currentAppointments={appointmentsArr} currentContacts={contactsArr} addAppointment={addAppointment}/>}
+        />
       </Route>
     )
   );

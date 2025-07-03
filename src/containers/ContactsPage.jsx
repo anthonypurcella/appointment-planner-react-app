@@ -35,7 +35,7 @@ export const ContactsPage = ({currentContacts, addContact, resetForm}) => {
       </section>
       <section className="contactsList">
         <h3>Contacts</h3>
-        <TileList currentContacts={currentContacts} />
+        <TileList currentArrs={currentContacts} />
       </section>
     </div>
   );

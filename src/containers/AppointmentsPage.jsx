@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { AppointmentForm  } from '../components/appointmentForm';
 import { TileList } from '../components/tileList';
 
-export const AppointmentsPage = (currentAppointments, currentContacts, addAppointment) => {
+export const AppointmentsPage = ({currentAppointments, currentContacts, addAppointment}) => {
 
     //State variables for name, contact, date, and time from form
     const [name, setName] = useState('');
@@ -10,8 +10,6 @@ export const AppointmentsPage = (currentAppointments, currentContacts, addAppoin
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
 
-    //Handle appointment submission
-        //Clear form on submission
 
 
     return (
@@ -25,14 +23,15 @@ export const AppointmentsPage = (currentAppointments, currentContacts, addAppoin
             setContact={setContact}
             date={date}
             setDate={setDate}
-            time={setTime}
+            time={time}
+            setTime={setTime}
             currentContacts={currentContacts}
-            handleAppointmentSubmit={""}
+            addAppointment={addAppointment}
           />
         </section>
         <section className='appointmentsList'>
             <h3>Appointments</h3>
-          <TileList currentAppointments={currentAppointments}/>
+          <TileList currentArrs={currentAppointments}/>
         </section>
       </div>
     );

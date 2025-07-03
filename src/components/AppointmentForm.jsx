@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContactPicker } from './ContactPicker';
 
-export const AppointmentForm = (name, setName, contact, setContact, date, setDate, time, setTime, currentContacts, handleAppointmentSubmit) => {
+export const AppointmentForm = ({name, setName, contact, setContact, date, setDate, time, setTime, currentContacts, addAppointment}) => {
 
     //Set the minimum date for form
     const getTodayString = () => {
@@ -16,11 +16,11 @@ export const AppointmentForm = (name, setName, contact, setContact, date, setDat
     return (
       <div>
         <h2>Appointment Form</h2>
-        <form onSubmit={""}>
-          <input id='name' type="text" placeholder='Appointment Name'></input>
-          <input id="date" type='date' min={getTodayString()}></input>
-          <input id='time' type='time'></input>
-          <ContactPicker currentContacts={currentContacts} handleOnChange={''} value={''} name={''}/>
+        <form onSubmit={(e) => addAppointment(e, name, contact, date, time)}>
+          <input id='name' type="text" placeholder='Appointment Name' value={name} onChange={(e) => setName(e.target.value)}></input>
+          <input id="date" type='date' min={getTodayString()} value={date} onChange={(e) => setDate(e.target.value)}></input>
+          <input id='time' type='time'  value={time} onChange={(e) => setTime(e.target.value)}></input>
+          <ContactPicker currentContacts={currentContacts} value={contact} onChange={setContact} name="contact" />
           <button type='submit'>Submit</button>
         </form>
       </div>
