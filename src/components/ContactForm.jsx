@@ -8,6 +8,7 @@ export const ContactForm = ({
   email,
   setEmail,
   addContact,
+  resetForm
 }) => {
 
 
@@ -37,7 +38,7 @@ export const ContactForm = ({
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
         ></input>
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={resetForm}>Submit</button>
       </form>
     </div>
   );

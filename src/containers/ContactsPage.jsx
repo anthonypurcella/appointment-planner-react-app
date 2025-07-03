@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ContactForm } from "../components/ContactForm";
 import { TileList } from "../components/tileList";
 
-export const ContactsPage = ({currentContacts, addContact}) => {
+export const ContactsPage = ({currentContacts, addContact, resetForm}) => {
   // State variables for name, phone number, and email from form
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-  // Check for name duplicates
-  for (let i = 0; i < currentContacts.length; i++) {
-    if (name === currentContacts[i].name) {
-      alert("Contact is a duplicate! Please enter a new name.");
+  //Checks if name in input is already a name in the Contacts Array
+  useEffect(() => {
+    for (let i = 0; i < currentContacts.length; i++) {
+      if (name === currentContacts[i].name) {
+        alert("Contact is a duplicate! Please enter a new name.");
+      }
     }
-  }
+  }, [name]);
+
 
   return (
     <div>
@@ -27,6 +30,7 @@ export const ContactsPage = ({currentContacts, addContact}) => {
           email={email}
           setEmail={setEmail}
           addContact={addContact}
+          resetForm={resetForm}
         />
       </section>
       <section className="contactsList">
