@@ -10,7 +10,28 @@ function App() {
   const contactsArr = [];
   const appointmentsArr = [];
 
+  
+
   //Contact callback function - adds new contact object with name, phone number, and email to the contactsArr
+   function addContact(e, name, phone, email) {
+    e.preventDefault();
+
+    const newContact = {
+      name,
+      phone,
+      email,
+    };
+
+    for (let i = 0; i < contactsArr.length; i++) {
+      if (newContact.name === contactsArr[i].name) {
+        alert("contact is duplicate");
+        return;
+      }
+    };
+
+    contactsArr.push(newContact);
+    console.log(contactsArr);
+  }
 
   //Appointment callback function - adds new appointment object with name, contact, date, and time to the the appointmentsArr
 
@@ -23,7 +44,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/contacts" element={<ContactsPage currentContacts={contactsArr} addContact={addContact}/>} />
         <Route path="/appointments" element={<AppointmentsPage />} />
       </Route>
     )
