@@ -15,13 +15,37 @@ export const AppointmentForm = ({name, setName, contact, setContact, date, setDa
 
     return (
       <div>
-        <h2>Appointment Form</h2>
         <form onSubmit={(e) => addAppointment(e, name, contact, date, time)}>
-          <input id='name' type="text" placeholder='Appointment Name' value={name} onChange={(e) => setName(e.target.value)}></input>
-          <input id="date" type='date' min={getTodayString()} value={date} onChange={(e) => setDate(e.target.value)}></input>
-          <input id='time' type='time'  value={time} onChange={(e) => setTime(e.target.value)}></input>
-          <ContactPicker currentContacts={currentContacts} value={contact} onChange={setContact} name="contact" />
-          <button type='submit'>Submit</button>
+          <input
+            id="name"
+            type="text"
+            placeholder="Appointment Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            autoComplete="off"
+          ></input>
+          <input
+            id="date"
+            type="date"
+            min={getTodayString()}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            autoComplete="off"
+          ></input>
+          <input
+            id="time"
+            type="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            autoComplete="off"
+          ></input>
+          <ContactPicker
+            currentContacts={currentContacts}
+            value={contact}
+            onChange={setContact}
+            name="contact"
+          />
+          <button type="submit">Submit</button>
         </form>
       </div>
     );

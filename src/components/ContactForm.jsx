@@ -14,7 +14,6 @@ export const ContactForm = ({
 
   return (
     <div>
-      <h2>Contact Form</h2>
       <form onSubmit={(e) => addContact(e, name, phone, email)}>
         <input
           id="name"
@@ -22,6 +21,7 @@ export const ContactForm = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Name"
+          autoComplete="off"
         ></input>
         <input
           id="phone"
@@ -30,6 +30,7 @@ export const ContactForm = ({
           onChange={(e) => setPhone(e.target.value)}
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           placeholder="Phone Number (xxx-xxx-xxxx)"
+          autoComplete="off"
         ></input>
         <input
           id="email"
@@ -37,8 +38,11 @@ export const ContactForm = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
+          autoComplete="off"
         ></input>
-        <button type="submit" onClick={resetForm}>Submit</button>
+        <button type="submit" onClick={resetForm}>
+          Submit
+        </button>
       </form>
     </div>
   );

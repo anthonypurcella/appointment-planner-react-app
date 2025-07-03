@@ -56,8 +56,6 @@ function App() {
     };
 
     setAppointmentsArr([...appointmentsArr, newAppointment]);
-
-    console.log(appointmentsArr);
   }
 
   //Router Setup
